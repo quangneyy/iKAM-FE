@@ -13,7 +13,7 @@ export default function HomePage() {
       <main className={styles.main}>
         <ol>
           <li>
-            <a href="https://nextjs.org/docs">{t('language')}</a> - Learn about Next.js features and API.
+            <a href="https://nextjs.org/docs">{t('language')}</a> {t('getStarted')}
           </li>
           <li>
             <a href="https://nextjs.org/learn">Learn</a> - An interactive Next.js tutorial.
