@@ -2,7 +2,7 @@
 
 import { useI18n } from "../../components/i18n/SimpleI18nProvider";
 import { LanguageSwitcher } from "../../components/i18n/LanguageSwitcher";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 
 export default function HomePage() {
   const { t } = useI18n();
