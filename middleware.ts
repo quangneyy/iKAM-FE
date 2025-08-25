@@ -1,35 +1,43 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
+  const { pathname, origin } = request.nextUrl;
 
   console.log('🔍 Middleware triggered for pathname:', pathname);
 
-  // If accessing root /, redirect to /vi (default locale)
+  // Keep root as-is (default locale: vi rendered at /)
   if (pathname === '/') {
-    console.log('🔄 Redirecting / to /vi (default locale)');
-    return NextResponse.redirect(new URL('/vi', request.url));
+    const res = NextResponse.next();
+    res.headers.set('x-middleware', 'ran');
+    return res;
   }
 
-  // If accessing /vi, redirect to / (but keep locale as 'vi')
-  if (pathname.startsWith('/vi')) {
-    console.log('🔄 Redirecting /vi to / (keeping locale: vi)');
-    return NextResponse.redirect(new URL('/', request.url));
+  // If path starts with /vi, strip the /vi prefix and redirect to the clean path
+  if (pathname === '/vi' || pathname.startsWith('/vi/')) {
+    const strippedPath = pathname.replace(/^\/vi(\/)?/, '/');
+    const url = new URL(strippedPath, origin);
+    console.log('🔄 Stripping /vi prefix →', url.toString());
+    return NextResponse.redirect(url);
   }
 
-  // If accessing /en, keep it as is
-  if (pathname.startsWith('/en')) {
-    console.log('✅ Keeping /en as is');
-    return NextResponse.next();
+  // Keep /en as-is
+  if (pathname === '/en' || pathname.startsWith('/en/')) {
+    const res = NextResponse.next();
+    res.headers.set('x-middleware', 'ran');
+    return res;
   }
 
-  // For any other path without locale, redirect to /vi (default locale)
-  console.log('🔄 Redirecting other paths to /vi (default locale)');
-  return NextResponse.redirect(new URL('/vi', request.url));
+  // For any other path without explicit locale, keep as vi
+  const res = NextResponse.next();
+  res.headers.set('x-middleware', 'ran');
+  return res;
 }
 
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|api).*)',
+    '/',
+    '/vi/:path*',
+    '/en/:path*',
+    // other paths fall through (served as vi)
   ],
 };
