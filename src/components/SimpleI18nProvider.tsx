@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { viCommon, enCommon } from '../translations';
 
 type Locale = 'vi' | 'en';
@@ -33,14 +34,21 @@ interface SimpleI18nProviderProps {
 }
 
 export const SimpleI18nProvider = ({ children, locale: initialLocale = 'vi' }: SimpleI18nProviderProps) => {
+  const pathname = usePathname();
   const [locale, setLocale] = useState<Locale>('vi'); // Always start with 'vi' to avoid hydration mismatch
   const [mounted, setMounted] = useState(false);
 
-  // Update locale when initialLocale changes (from URL) after mount
+  // Detect locale from URL pathname
   useEffect(() => {
     setMounted(true);
-    setLocale(initialLocale);
-  }, [initialLocale]);
+
+    // Check if pathname starts with /en
+    if (pathname?.startsWith('/en')) {
+      setLocale('en');
+    } else {
+      setLocale('vi');
+    }
+  }, [pathname, initialLocale]);
 
   const t = (key: keyof Translations): string => {
     return translations[locale][key] || key;

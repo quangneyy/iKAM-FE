@@ -9,12 +9,8 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  if (locale !== 'en') {
-    return null;
-  }
-
   return (
-    <SimpleI18nProvider locale="en">
+    <SimpleI18nProvider locale={locale}>
       {children}
     </SimpleI18nProvider>
   );
