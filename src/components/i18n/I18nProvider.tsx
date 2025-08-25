@@ -2,7 +2,7 @@
 
 import { I18nextProvider } from 'react-i18next';
 import { useEffect, useState } from 'react';
-import initI18next from '../i18n';
+import initI18next from '../../i18n';
 import type { i18n } from 'i18next';
 
 interface I18nProviderProps {

@@ -1,4 +1,4 @@
-import { SimpleI18nProvider } from "../../components/SimpleI18nProvider";
+import { SimpleI18nProvider } from "../../components/i18n/SimpleI18nProvider";
 
 export default async function LocaleLayout({
   children,

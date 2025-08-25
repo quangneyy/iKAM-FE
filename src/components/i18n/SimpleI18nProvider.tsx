@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { viCommon, enCommon } from '../translations';
+import { viCommon, enCommon } from '../../translations';
 
 type Locale = 'vi' | 'en';
 type Translations = typeof viCommon;
