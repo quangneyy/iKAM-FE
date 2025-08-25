@@ -69,6 +69,7 @@ export default function Header() {
                         {[...locales].sort().map((locale) => (
                           <option key={locale} value={locale}>
                             {localeLabels[locale] || locale}
+                            {localeLabels[locale] || locale}
                           </option>
                         ))}
                       </select>
