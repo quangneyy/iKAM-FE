@@ -35,9 +35,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/',
-    '/vi/:path*',
-    '/en/:path*',
-    // other paths fall through (served as vi)
+    // Run on everything except Next.js internals and API routes
+    '/((?!_next/static|_next/image|favicon.ico|api).*)',
   ],
 };
