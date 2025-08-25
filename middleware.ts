@@ -5,10 +5,10 @@ export function middleware(request: NextRequest) {
 
   console.log('🔍 Middleware triggered for pathname:', pathname);
 
-  // If accessing root /, keep it as is (will use default locale 'vi')
+  // If accessing root /, redirect to /vi (default locale)
   if (pathname === '/') {
-    console.log('✅ Keeping / as is (default locale: vi)');
-    return NextResponse.next();
+    console.log('🔄 Redirecting / to /vi (default locale)');
+    return NextResponse.redirect(new URL('/vi', request.url));
   }
 
   // If accessing /vi, redirect to / (but keep locale as 'vi')
@@ -23,14 +23,13 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // For any other path without locale, redirect to / (default locale: vi)
-  console.log('🔄 Redirecting other paths to / (default locale: vi)');
-  return NextResponse.redirect(new URL('/', request.url));
+  // For any other path without locale, redirect to /vi (default locale)
+  console.log('🔄 Redirecting other paths to /vi (default locale)');
+  return NextResponse.redirect(new URL('/vi', request.url));
 }
 
 export const config = {
   matcher: [
-    // Match all paths except static files and API routes
     '/((?!_next/static|_next/image|favicon.ico|api).*)',
   ],
 };
