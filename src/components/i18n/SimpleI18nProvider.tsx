@@ -35,7 +35,7 @@ interface SimpleI18nProviderProps {
 
 export const SimpleI18nProvider = ({ children, locale: initialLocale = 'vi' }: SimpleI18nProviderProps) => {
   const pathname = usePathname();
-  const [locale, setLocale] = useState<Locale>('vi'); // Always start with 'vi' to avoid hydration mismatch
+  const [locale, setLocale] = useState<Locale>('vi'); // Always start with 'vi' to avoid hydration mismatchquangquagquangneuquangnwqquagq
   const [mounted, setMounted] = useState(false);
 
   // Detect locale from URL pathname

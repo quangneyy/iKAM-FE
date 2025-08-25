@@ -3,6 +3,7 @@
 import { useI18n } from "../../components/i18n/SimpleI18nProvider";
 import { LanguageSwitcher } from "../../components/i18n/LanguageSwitcher";
 import styles from "./page.module.scss";
+import Header from "../../components/common/Header/Header";
 
 export default function HomePage() {
   const { t } = useI18n();

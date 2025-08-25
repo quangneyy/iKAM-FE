@@ -1,6 +1,8 @@
 import styles from "./page.module.scss";
-
+import { useI18n } from "../../../components/i18n/SimpleI18nProvider";
+import { t } from "../../../../node_modules/i18next/index";
 export default async function Products() {
+
     return (
         <div className={styles["mobility-page"]}>
             <section className={styles["page-banner-category"]}>
