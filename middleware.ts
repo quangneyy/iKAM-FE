@@ -5,16 +5,16 @@ export function middleware(request: NextRequest) {
 
   console.log('🔍 Middleware triggered for pathname:', pathname);
 
-  // If accessing root /, redirect to /vi
+  // If accessing root /, keep it as is (will use default locale 'vi')
   if (pathname === '/') {
-    console.log('🔄 Redirecting / to /vi');
-    return NextResponse.redirect(new URL('/vi', request.url));
+    console.log('✅ Keeping / as is (default locale: vi)');
+    return NextResponse.next();
   }
 
-  // If accessing /vi, keep it as is
+  // If accessing /vi, redirect to / (but keep locale as 'vi')
   if (pathname.startsWith('/vi')) {
-    console.log('✅ Keeping /vi as is');
-    return NextResponse.next();
+    console.log('🔄 Redirecting /vi to / (keeping locale: vi)');
+    return NextResponse.redirect(new URL('/', request.url));
   }
 
   // If accessing /en, keep it as is
@@ -23,9 +23,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // For any other path without locale, redirect to /vi
-  console.log('🔄 Redirecting other paths to /vi');
-  return NextResponse.redirect(new URL('/vi', request.url));
+  // For any other path without locale, redirect to / (default locale: vi)
+  console.log('🔄 Redirecting other paths to / (default locale: vi)');
+  return NextResponse.redirect(new URL('/', request.url));
 }
 
 export const config = {

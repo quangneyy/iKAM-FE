@@ -10,8 +10,8 @@ export const LanguageSwitcher = () => {
 
     const handleLanguageChange = (newLocale: 'vi' | 'en') => {
         if (newLocale === 'vi') {
-            // Switch to Vietnamese - go to root
-            router.push('/vi');
+            // Switch to Vietnamese - go to root (default locale)
+            router.push('/');
         } else {
             // Switch to English - go to /en
             router.push('/en');
