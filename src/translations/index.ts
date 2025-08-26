@@ -13,17 +13,29 @@ export const viCommon = {
 
   // Header translations
   "login": "Đăng nhập",
-  "contactUs": "Liên hệ",
+  "contactUs": "Liên hệ chúng tôi",
   "products": "Sản phẩm",
   "industriesSolutions": "Ngành công nghiệp & Giải pháp",
   "knowledgeCenter": "Trung tâm Kiến thức",
   "serviceSupport": "Dịch vụ & Hỗ trợ",
   "aboutUs": "Về chúng tôi",
 
+  // Industries Solutions page translations
+  "industriesHeroDescription": "Khám phá cách giải pháp của chúng tôi giúp giải quyết các thách thức và vấn đề đo lường của bạn.",
+  "new": "Mới",
+  "motorTesting": "Kiểm tra Động cơ",
+  "batteryTesting": "Kiểm tra Pin",
+  "inverterTesting": "Kiểm tra Bộ biến tần",
+  "batteryManagement": "Quản lý Pin",
+  "cellTesting": "Kiểm tra Cell",
+  "packTesting": "Kiểm tra Pack",
+  "solarPower": "Năng lượng Mặt trời",
+  "windPower": "Năng lượng Gió",
+  "gridManagement": "Quản lý Lưới điện",
+
   // Products page translations
   "mobility": "Di động",
   "home": "Trang chủ",
-  "industriesSolutions": "Ngành công nghiệp & Giải pháp",
   "mobilityIntro": "Memory HiCorder ghi lại dạng sóng trên phạm vi tần số rộng, cho phép đo an toàn các tín hiệu đa dạng mà không cần bộ khuếch đại cách ly bên ngoài hoặc lo ngại về sự khác biệt tiềm năng. Kể từ khi ra mắt Memory HiCorder đầu tiên vào năm 1983, dòng sản phẩm này đã nhận được sự ủng hộ nhiệt tình từ các kỹ sư và nhân viên bảo trì.",
   "discoverMotorTesting": "Khám phá Giải pháp Kiểm tra Động cơ",
   "evMotorInverter": "Giải pháp Đo lường Động cơ EV & Bộ biến tần",
@@ -79,10 +91,22 @@ export const enCommon = {
   "serviceSupport": "Service & Support",
   "aboutUs": "About Us",
 
+  // Industries Solutions page translations
+  "industriesHeroDescription": "Explore how our solutions help solve your measurement challenges and issues.",
+  "new": "NEW",
+  "motorTesting": "Motor Testing",
+  "batteryTesting": "Battery Testing",
+  "inverterTesting": "Inverter Testing",
+  "batteryManagement": "Battery Management",
+  "cellTesting": "Cell Testing",
+  "packTesting": "Pack Testing",
+  "solarPower": "Solar Power",
+  "windPower": "Wind Power",
+  "gridManagement": "Grid Management",
+
   // Products page translations
   "mobility": "Mobility",
   "home": "Home",
-  "industriesSolutions": "Industries & Solutions",
   "mobilityIntro": "The Memory HiCorder records waveforms across a wide frequency range, allowing safe measurement of diverse signals without the need for external isolated amplifiers or concerns about potential differences. Since the launch of the first Memory HiCorder in 1983, this product series has earned enthusiastic support from engineers and maintenance personnel.",
   "discoverMotorTesting": "Discover Motor Testing Solutions",
   "evMotorInverter": "EV Motor & Inverter Measurement Solutions",
