@@ -10,7 +10,16 @@ export const viCommon = {
   "language": "Ngôn ngữ",
   "switchToEnglish": "Chuyển sang tiếng Anh",
   "switchToVietnamese": "Chuyển sang tiếng Việt",
-  
+
+  // Header translations
+  "login": "Đăng nhập",
+  "contactUs": "Liên hệ",
+  "products": "Sản phẩm",
+  "industriesSolutions": "Ngành công nghiệp & Giải pháp",
+  "knowledgeCenter": "Trung tâm Kiến thức",
+  "serviceSupport": "Dịch vụ & Hỗ trợ",
+  "aboutUs": "Về chúng tôi",
+
   // Products page translations
   "mobility": "Di động",
   "home": "Trang chủ",
@@ -60,7 +69,16 @@ export const enCommon = {
   "language": "Language",
   "switchToEnglish": "Switch to English",
   "switchToVietnamese": "Switch to Vietnamese",
-  
+
+  // Header translations
+  "login": "Login",
+  "contactUs": "Contact Us",
+  "products": "Products",
+  "industriesSolutions": "Industries & Solutions",
+  "knowledgeCenter": "Knowledge Center",
+  "serviceSupport": "Service & Support",
+  "aboutUs": "About Us",
+
   // Products page translations
   "mobility": "Mobility",
   "home": "Home",

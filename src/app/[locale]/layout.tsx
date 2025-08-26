@@ -1,4 +1,5 @@
 import { SimpleI18nProvider } from "../../components/i18n/SimpleI18nProvider";
+import Header from "../../components/common/Header/Header";
 
 export default async function LocaleLayout({
   children,
@@ -9,11 +10,11 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  // Validate locale
   const validLocale = locale === 'en' ? 'en' : 'vi';
 
   return (
     <SimpleI18nProvider locale={validLocale}>
+      <Header />
       {children}
     </SimpleI18nProvider>
   );
