@@ -20,14 +20,14 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // Keep /en as-is
+  // Keep /en as-is for English locale
   if (pathname === '/en' || pathname.startsWith('/en/')) {
     const res = NextResponse.next();
     res.headers.set('x-middleware', 'ran');
     return res;
   }
 
-  // For any other path without explicit locale, keep as vi
+  // For any other path without explicit locale, keep as vi (default)
   const res = NextResponse.next();
   res.headers.set('x-middleware', 'ran');
   return res;

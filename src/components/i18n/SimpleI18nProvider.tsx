@@ -35,10 +35,10 @@ interface SimpleI18nProviderProps {
 
 export const SimpleI18nProvider = ({ children, locale: initialLocale = 'vi' }: SimpleI18nProviderProps) => {
   const pathname = usePathname();
-  const [locale, setLocale] = useState<Locale>('vi'); // Always start with 'vi' to avoid hydration mismatchquangquagquangneuquangnwqquagq
+  const [locale, setLocale] = useState<Locale>(initialLocale);
   const [mounted, setMounted] = useState(false);
 
-  // Detect locale from URL pathname
+  // Detect locale from URL pathname and update when pathname changes
   useEffect(() => {
     setMounted(true);
 
@@ -48,7 +48,14 @@ export const SimpleI18nProvider = ({ children, locale: initialLocale = 'vi' }: S
     } else {
       setLocale('vi');
     }
-  }, [pathname, initialLocale]);
+  }, [pathname]);
+
+  // Update locale when initialLocale prop changes
+  useEffect(() => {
+    if (initialLocale && initialLocale !== locale) {
+      setLocale(initialLocale);
+    }
+  }, [initialLocale, locale]);
 
   const t = (key: keyof Translations): string => {
     return translations[locale][key] || key;

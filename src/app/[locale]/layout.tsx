@@ -9,8 +9,11 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
+  // Validate locale
+  const validLocale = locale === 'en' ? 'en' : 'vi';
+
   return (
-    <SimpleI18nProvider locale={locale}>
+    <SimpleI18nProvider locale={validLocale}>
       {children}
     </SimpleI18nProvider>
   );

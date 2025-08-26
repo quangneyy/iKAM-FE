@@ -3,46 +3,36 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
-import { i18n } from "../../../../i18n-config";
+import { useI18n } from "../../i18n/SimpleI18nProvider";
 import styles from './Header.module.scss';
 
 export default function Header() {
-  const { locales, defaultLocale } = i18n;
+  const { t, locale, changeLanguage } = useI18n();
   const router = useRouter();
   const pathname = usePathname();
-  const pathLocale = pathname.split("/")[1];
-
 
   // Map Language Show
   const localeLabels: Record<string, string> = {
-    vi: "🇻🇳 Vietnamese",
+    vi: "🇻🇳 Tiếng Việt",
     en: "🇬🇧 English",
-    fr: "🇫🇷 French",
   };
 
-  const currentLocale = i18n.locales.includes(pathLocale) ? pathLocale : defaultLocale;
+  const handleChange = (newLocale: string) => {
+    changeLanguage(newLocale as 'vi' | 'en');
 
-  const handleChange = (locale: string) => {
-    if (locale === defaultLocale) {
-      router.push("/");
+    if (newLocale === 'vi') {
+      // Remove /en prefix if exists, or keep as is for root
+      const newPath = pathname.startsWith('/en') ? pathname.replace('/en', '') : pathname;
+      router.push(newPath || '/');
     } else {
-      router.push(`/${locale}`);
+      // Add /en prefix
+      const newPath = pathname.startsWith('/en') ? pathname : `/en${pathname}`;
+      router.push(newPath);
     }
   };
 
   return (
     <header className={styles.header}>
-      {/* <div dir="ltr" className="languages">
-        {[...locales].sort().map((locale) => (
-          <Link
-            key={locale}
-            href={locale === defaultLocale ? "/" : `/${locale}`}
-          >
-            {locale}
-          </Link>
-        ))}
-      </div> */}
-
       <div className={styles.header_main}>
         <div className={styles.header__container}>
           <div className="logo">
@@ -64,12 +54,11 @@ export default function Header() {
                     <div className={styles.language_select}>
                       <select
                         onChange={(e) => handleChange(e.target.value)}
-                        value={currentLocale}
+                        value={locale}
                       >
-                        {[...locales].sort().map((locale) => (
-                          <option key={locale} value={locale}>
-                            {localeLabels[locale] || locale}
-                            {localeLabels[locale] || locale}
+                        {Object.entries(localeLabels).map(([localeCode, label]) => (
+                          <option key={localeCode} value={localeCode}>
+                            {label}
                           </option>
                         ))}
                       </select>
@@ -88,7 +77,6 @@ export default function Header() {
             <nav className={styles.nav}>
               <ul>
                 <li><a href="/products">Products</a></li>
-
                 <li>
                   <a href="/industries-solutions">Industries & Solutions</a>
                 </li>

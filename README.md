@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IKAM OEM - Đa ngôn ngữ
 
-## Getting Started
+Dự án này hỗ trợ đa ngôn ngữ với tiếng Việt (vi) và tiếng Anh (en).
 
-First, run the development server:
+## Cấu trúc Dự án
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+ikam-oem/
+├── src/
+│   ├── app/
+│   │   └── [locale]/          # Dynamic routing cho ngôn ngữ
+│   │       ├── layout.tsx     # Layout với SimpleI18nProvider
+│   │       ├── page.tsx       # Trang chủ
+│   │       └── products/      # Trang sản phẩm
+│   │           └── page.tsx   # Trang sản phẩm với đa ngôn ngữ
+│   ├── components/
+│   │   └── i18n/
+│   │       ├── SimpleI18nProvider.tsx  # Provider cho i18n
+│   │       └── LanguageSwitcher.tsx    # Component chuyển đổi ngôn ngữ
+│   ├── translations/
+│   │   └── index.ts           # Các bản dịch
+│   └── hooks/
+│       └── useI18n.ts         # Hook cho i18n
+├── public/
+│   └── locales/               # File ngôn ngữ
+│       ├── en/
+│       │   └── common.json    # Bản dịch tiếng Anh
+│       └── vi/
+│           └── common.json    # Bản dịch tiếng Việt
+├── next-i18next.config.js     # Cấu hình i18n
+└── middleware.ts               # Middleware xử lý routing
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Cách Sử Dụng
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. Thêm Bản Dịch Mới
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Để thêm bản dịch mới, cập nhật file `src/translations/index.ts`:
 
-## Learn More
+```typescript
+export const viCommon = {
+  // ... existing translations
+  "newKey": "Bản dịch tiếng Việt"
+};
 
-To learn more about Next.js, take a look at the following resources:
+export const enCommon = {
+  // ... existing translations
+  "newKey": "English translation"
+};
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. Sử Dụng Trong Component
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```typescript
+import { useI18n } from "../../../components/i18n/SimpleI18nProvider";
 
-## Deploy on Vercel
+export default function MyComponent() {
+  const { t } = useI18n();
+  
+  return (
+    <div>
+      <h1>{t("newKey")}</h1>
+    </div>
+  );
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. Routing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/` hoặc `/vi` → Tiếng Việt (mặc định)
+- `/en` → Tiếng Anh
+
+### 4. Chuyển Đổi Ngôn Ngữ
+
+Sử dụng component `LanguageSwitcher` hoặc hook `useI18n`:
+
+```typescript
+const { changeLanguage } = useI18n();
+
+// Chuyển sang tiếng Anh
+changeLanguage('en');
+
+// Chuyển sang tiếng Việt
+changeLanguage('vi');
+```
+
+## Tính Năng
+
+- ✅ Hỗ trợ tiếng Việt và tiếng Anh
+- ✅ Dynamic routing với `[locale]`
+- ✅ Middleware xử lý routing tự động
+- ✅ Provider pattern cho state management
+- ✅ Type-safe translations
+- ✅ Responsive design với SCSS modules
+
+## Chạy Dự Án
+
+```bash
+# Cài đặt dependencies
+npm install
+
+# Chạy development server
+npm run dev
+
+# Build production
+npm run build
+
+# Start production server
+npm start
+```
+
+## Cấu Trúc Dịch Thuật
+
+Tất cả text trong ứng dụng đều được dịch thông qua hệ thống key-value:
+
+- **Key**: Định danh duy nhất cho mỗi đoạn text
+- **Value**: Bản dịch tương ứng cho từng ngôn ngữ
+
+Ví dụ:
+```typescript
+"mobility": {
+  "vi": "Di động",
+  "en": "Mobility"
+}
+```
+
+## Lưu Ý
+
+1. Luôn sử dụng `useI18n()` hook từ `SimpleI18nProvider`
+2. Không hardcode text trực tiếp trong component
+3. Cập nhật cả hai ngôn ngữ khi thêm key mới
+4. Sử dụng key có ý nghĩa và dễ hiểu
