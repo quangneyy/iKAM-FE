@@ -15,7 +15,8 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   try {
-    const messages = await getMessages();
+    // Load messages directly based on the locale from params
+    const messages = (await import(`../../translations/${locale}.json`)).default;
 
     return (
       <NextIntlClientProvider messages={messages}>
