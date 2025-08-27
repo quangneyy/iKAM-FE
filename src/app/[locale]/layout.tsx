@@ -1,6 +1,6 @@
+import Header from '@/components/common/Header/Header';
+import Footer from '@/components/common/Footer/Footer';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import Header from '../../components/common/Header/Header';
 
 export function generateStaticParams() {
   return [{ locale: 'vi' }, { locale: 'en' }];
@@ -16,7 +16,6 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   try {
-    // Load messages directly based on the locale from params
     const messages = (await import(`../../translations/${locale}.json`)).default;
 
     return (
@@ -24,6 +23,7 @@ export default async function LocaleLayout({
         <div>
           <Header />
           {children}
+          <Footer />
         </div>
       </NextIntlClientProvider>
     );
