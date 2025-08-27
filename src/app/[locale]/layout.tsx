@@ -1,5 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import Header from '../../components/common/Header/Header';
 
 export function generateStaticParams() {
   return [{ locale: 'vi' }, { locale: 'en' }];
@@ -21,7 +22,7 @@ export default async function LocaleLayout({
     return (
       <NextIntlClientProvider messages={messages}>
         <div>
-          <h2>Locale: {locale}</h2>
+          <Header />
           {children}
         </div>
       </NextIntlClientProvider>
