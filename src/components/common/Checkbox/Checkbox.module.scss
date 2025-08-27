@@ -1,74 +1,88 @@
-@import "../../../styles/variables";
-@import "../../../styles/mixins";
+/* Checkbox.module.scss */
 
 
-.checkboxWrapper {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
+.checkbox {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-  input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
+  &__input {
+    display: none;
+    visibility: hidden;
+
+    &:checked + .checkbox__label span:first-child {
+      background: $checkbox-active;
+      border-color: $checkbox-active;
+      animation: wave 0.4s ease;
+    }
+
+    &:checked + .checkbox__label span:first-child svg {
+      stroke-dashoffset: 0;
+    }
+
+    &:checked + .checkbox__label span:first-child::before {
+      transform: scale(3.5);
+      opacity: 0;
+      transition: all 0.6s ease;
+    }
+  }
+
+  &__label {
+    margin: auto;
+    user-select: none;
     cursor: pointer;
+    font-size: $text-sm;
+    font-weight: $font-medium;
 
-    & + label {
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      transform: translate3d(0, 0, 0);
+    }
+
+    span:first-child {
       position: relative;
-      padding-left: $checkbox-width + 6px;
-      cursor: pointer;
-      // ô vuông
-      &::before {
-        content: "";
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      transform: scale(1);
+      vertical-align: middle;
+      border: 1.3px solid $checkbox-border;
+      transition: all 0.2s ease;
+
+      svg {
+        width: 10px;
+        height: 8.3px;
         position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: $checkbox-width;
-        height: $checkbox-width;
-        border: 2px solid #888;
-        border-radius: 4px;
-        background: white;
-        transition: all 0.2s ease;
-      }
-
-      // dấu tick
-      &::after {
-        content: "";
-        position: absolute;
-        left: 6px;
-        top: 40%;
-        transform: translateY(-45%) rotate(45deg);
-        width: 6px;
-        height: 10px;
-        border-right: 2px solid white;
-        border-bottom: 2px solid white;
-        opacity: 0;
-        transition: opacity 0.2s ease;
+        top: 4px;
+        left: 2.7px;
+        fill: none;
+        stroke: #fff;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 16px;
+        stroke-dashoffset: 16px;
+        transition: all 0.3s ease;
+        transition-delay: 0.1s;
+        transform: translate3d(0, 0, 0);
       }
     }
 
-    // khi checked
-    &:checked + label {
-      &::before {
-        background: $color-blue;
-        border-color: $color-blue;
-      }
-
-      &::after {
-        opacity: 1;
-      }
+    span:last-child {
+      padding-left: 10px;
     }
 
-    // khi disabled
-    &:disabled + label {
-      cursor: not-allowed;
-      color: #aaa;
-
-      &::before {
-        background: #eee;
-        border-color: #ccc;
-      }
+    &:hover span:first-child {
+      border-color: $checkbox-active;
     }
+  }
+}
+
+@keyframes wave {
+  50% {
+    transform: scale(0.9);
   }
 }

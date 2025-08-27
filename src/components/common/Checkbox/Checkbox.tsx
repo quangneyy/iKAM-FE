@@ -1,29 +1,36 @@
-'use client'
-import React from "react";
+"use client";
+
+import { FC } from "react";
 import styles from "./Checkbox.module.scss";
 
-type Props = {
-    title: string;
+type IProps = {
+    id: string;
+    title?: string;
     checked?: boolean;
     onPress?: (checked: boolean) => void;
-    disabled?: boolean;
 };
 
-const Checkbox: React.FC<Props> = (props) => {
-    const { title, checked, onPress, disabled } = props;
+const Checkbox: FC<IProps> = (props) => {
 
-    const id = React.useId();
+    const { id = '', title = "Checkbox", checked, onPress } = props
 
     return (
-        <div className={styles.checkboxWrapper}>
+        <div className={styles.checkbox}>
             <input
-                type="checkbox"
                 id={id}
+                type="checkbox"
                 checked={checked}
-                disabled={disabled}
-                onChange={(e) => onPress(e.target.checked)}
+                onChange={(e) => onPress?.(e.target.checked)}
+                className={styles.checkbox__input}
             />
-            <label htmlFor={id}>{title}</label>
+            <label htmlFor={id} className={styles.checkbox__label}>
+                <span>
+                    <svg viewBox="0 0 12 10">
+                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                    </svg>
+                </span>
+                <span>{title}</span>
+            </label>
         </div>
     );
 };
