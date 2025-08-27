@@ -1,10 +1,12 @@
 'use client';
 
 import styles from "./page.module.scss";
-import { useI18n } from "../../../components/i18n/SimpleI18nProvider";
+import { useTranslations, useLocale } from 'next-intl';
+import Link from 'next/link';
 
 export default function Products() {
-    const { t } = useI18n();
+    const t = useTranslations();
+    const locale = useLocale();
 
     return (
         <div className={styles["mobility-page"]}>
@@ -15,8 +17,8 @@ export default function Products() {
 
             <div className={styles["flex-column-category"]}>
                 <div className={styles["breadcrumb-category"]}>
-                    <span><a href="/index.html">{t("home")}</a></span> &gt;
-                    <span><a href="/industries-solutions">{t("industriesSolutions")}</a></span> &gt;
+                    <span><Link href={`/${locale}`}>{t("home")}</Link></span> &gt;
+                    <span><Link href={`/${locale}/industries-solutions`}>{t("industriesSolutions")}</Link></span> &gt;
                     <span>{t("mobility")}</span>
                 </div>
 
@@ -49,7 +51,7 @@ export default function Products() {
                                     <p>
                                         {t("driveCuttingEdge")}
                                     </p>
-                                    <a href="#" className={styles["btn-learn-more"]}>{t("learnMore")}</a>
+                                    <Link href={`/${locale}/industries-solutions/mobility`} className={styles["btn-learn-more"]}>{t("learnMore")}</Link>
                                 </div>
                             </div>
                         </section>
@@ -59,10 +61,10 @@ export default function Products() {
                             <div className={styles["explore-resources__box"]}>
                                 <p><strong>{t("findOutMore")}</strong></p>
                                 <div className={styles["explore-resources__links"]}>
-                                    <a href="/learning/electricity/voltage.html"><span className={styles["arrow"]}>&#9662;</span> {t("applicationNotes")}</a>
-                                    <a href="/learning/electricity/voltage.html"><span className={styles["arrow"]}>&#9662;</span> {t("caseStudy")}</a>
-                                    <a href="/learning/electricity/voltage.html"><span className={styles["arrow"]}>&#9662;</span> {t("solutionArticleBasicKnowledge")}</a>
-                                    <a href="/learning/electricity/voltage.html"><span className={styles["arrow"]}>&#9662;</span> {t("technicalArticle")}</a>
+                                    <Link href={`/${locale}/learning/electricity/voltage`}>{t("applicationNotes")}</Link>
+                                    <Link href={`/${locale}/learning/electricity/voltage`}>{t("caseStudy")}</Link>
+                                    <Link href={`/${locale}/learning/electricity/voltage`}>{t("solutionArticleBasicKnowledge")}</Link>
+                                    <Link href={`/${locale}/learning/electricity/voltage`}>{t("technicalArticle")}</Link>
                                 </div>
                             </div>
                         </section>
@@ -70,136 +72,136 @@ export default function Products() {
                         <section className={styles["application-notes"]}>
                             <h2>{t("applicationNotes")}</h2>
                             <div className={styles["application-notes__grid"]}>
-                                <a href="/industries-solutions/mobility" className={styles["application-notes__item"]}>
+                                <Link href={`/${locale}/industries-solutions/mobility`} className={styles["application-notes__item"]}>
                                     <img
                                         src="https://www.hioki.com/system/files/image/2025-02/motor_02.jpg"
                                         alt="Motor Testing Lines"
                                     />
                                     <p>{t("improvingMotorTesting")}</p>
-                                </a>
-                                <a href="/industries-solutions/mobility" className={styles["application-notes__item"]}>
+                                </Link>
+                                <Link href={`/${locale}/industries-solutions/mobility`} className={styles["application-notes__item"]}>
                                     <img
                                         src="https://www.hioki.com/system/files/image/2025-02/motor_03.jpg"
                                         alt="LCR Meter"
                                     />
                                     <p>{t("testingVarnishImpregnation")}</p>
-                                </a>
-                                <a href="/industries-solutions/mobility" className={styles["application-notes__item"]}>
+                                </Link>
+                                <Link href={`/${locale}/industries-solutions/mobility`} className={styles["application-notes__item"]}>
                                     <img
                                         src="https://www.hioki.com/system/files/image/2025-02/motor_04-2.jpg"
                                         alt="PSA Function"
                                     />
                                     <p>{t("investigationInverterMotor")}</p>
-                                </a>
-                                <a href="/industries-solutions/mobility" className={styles["application-notes__item"]}>
+                                </Link>
+                                <Link href={`/${locale}/industries-solutions/mobility`} className={styles["application-notes__item"]}>
                                     <img src="https://www.hioki.com/system/files/image/2025-02/motor_05.jpg"
                                         alt="AWD Dual-motors"
                                     />
                                     <p>{t("evaluatingAwdDualMotors")}</p>
-                                </a>
-                                <a href="/industries-solutions/mobility" className={styles["application-notes__item"]}>
+                                </Link>
+                                <Link href={`/${locale}/industries-solutions/mobility`} className={styles["application-notes__item"]}>
                                     <img src="https://www.hioki.com/system/files/image/2025-02/motor_06.jpg"
                                         alt="Outboard Motors"
                                     />
                                     <p>{t("operationalTestingEngines")}</p>
-                                </a>
-                                <a href="/industries-solutions/mobility" className={styles["application-notes__item"]}>
+                                </Link>
+                                <Link href={`/${locale}/industries-solutions/mobility`} className={styles["application-notes__item"]}>
                                     <img src="https://www.hioki.com/system/files/image/2025-02/motor_07.jpg"
                                         alt="Motor Operation" />
                                     <p>{t("recordEncoderPulse")}</p>
-                                </a>
-                                <a href="/industries-solutions/mobility" className={styles["application-notes__item"]}>
+                                </Link>
+                                <Link href={`/${locale}/industries-solutions/mobility`} className={styles["application-notes__item"]}>
                                     <img src="https://www.hioki.com/system/files/image/2025-02/motor_03.jpg"
                                         alt="LCR Meter"
                                     />
                                     <p>{t("testingVarnishImpregnation")}</p>
-                                </a>
-                                <a href="/industries-solutions/mobility" className={styles["application-notes__item"]}>
+                                </Link>
+                                <Link href={`/${locale}/industries-solutions/mobility`} className={styles["application-notes__item"]}>
                                     <img src="https://www.hioki.com/system/files/image/2025-02/motor_04-2.jpg"
                                         alt="PSA Function"
                                     />
                                     <p>{t("investigationInverterMotor")}</p>
-                                </a>
+                                </Link>
                             </div>
                         </section>
 
                         <section className={styles["application-notes"]}>
                             <h2>{t("caseStudy")}</h2>
                             <div className={styles["application-notes__grid"]}>
-                                <a href="/industries-solutions/mobility" className={styles["application-notes__item"]}>
+                                <Link href={`/${locale}/industries-solutions/mobility`} className={styles["application-notes__item"]}>
                                     <img src="https://www.hioki.com/system/files/image/2025-02/motor_10.jpg"
                                         alt="Motor Testing Lines"
                                     />
                                     <p>{t("performanceEvaluationDual")}</p>
-                                </a>
-                                <a href="/industries-solutions/mobility" className={styles["application-notes__item"]}>
+                                </Link>
+                                <Link href={`/${locale}/industries-solutions/mobility`} className={styles["application-notes__item"]}>
                                     <img src="https://www.hioki.com/system/files/image/2025-02/motor_11.jpg"
                                         alt="LCR Meter"
                                     />
                                     <p>{t("detectDefectsEarly")}</p>
-                                </a>
+                                </Link>
                             </div>
                         </section>
 
                         <section className={styles["application-notes"]}>
                             <h2>{t("solutionArticleBasicKnowledge")}</h2>
                             <div className={styles["application-notes__grid"]}>
-                                <a href="/industries-solutions/mobility" className={styles["application-notes__item"]}>
+                                <Link href={`/${locale}/industries-solutions/mobility`} className={styles["application-notes__item"]}>
                                     <img src="https://www.hioki.com/system/files/image/2025-02/motor_12-2.jpg"
                                         alt="Motor Testing Lines"
                                     />
                                     <p>{t("performanceEvaluationDual")}</p>
-                                </a>
-                                <a href="/industries-solutions/mobility" className={styles["application-notes__item"]}>
+                                </Link>
+                                <Link href={`/${locale}/industries-solutions/mobility`} className={styles["application-notes__item"]}>
                                     <img src="https://www.hioki.com/system/files/image/2025-02/motor_13-2.jpg"
                                         alt="LCR Meter" />
                                     <p>{t("detectDefectsEarly")}</p>
-                                </a>
-                                <a href="/industries-solutions/mobility" className={styles["application-notes__item"]}>
+                                </Link>
+                                <Link href={`/${locale}/industries-solutions/mobility`} className={styles["application-notes__item"]}>
                                     <img src="https://www.hioki.com/system/files/image/2025-02/motor_03.jpg"
                                         alt="LCR Meter"
                                     />
                                     <p>{t("detectDefectsEarly")}</p>
-                                </a>
+                                </Link>
                             </div>
                         </section>
 
                         <section className={styles["application-notes"]}>
                             <h2>{t("technicalArticle")}</h2>
                             <div className={styles["application-notes__grid"]}>
-                                <a href="/industries-solutions/mobility" className={styles["application-notes__item"]}>
+                                <Link href={`/${locale}/industries-solutions/mobility`} className={styles["application-notes__item"]}>
                                     <img src="https://www.hioki.com/system/files/image/2025-02/motor_15.jpg"
                                         alt="Motor Testing Lines"
                                     />
                                     <p>{t("effectivenessCurrentSensor")}</p>
-                                </a>
-                                <a href="/industries-solutions/mobility" className={styles["application-notes__item"]}>
+                                </Link>
+                                <Link href={`/${locale}/industries-solutions/mobility`} className={styles["application-notes__item"]}>
                                     <img src="https://www.hioki.com/system/files/image/2025-02/motor_16.jpg"
                                         alt="LCR Meter"
                                     />
                                     <p>{t("powerMeasurementDevelopment")}</p>
-                                </a>
-                                <a href="/industries-solutions/mobility" className={styles["application-notes__item"]}>
+                                </Link>
+                                <Link href={`/${locale}/industries-solutions/mobility`} className={styles["application-notes__item"]}>
                                     <img src="https://www.hioki.com/system/files/image/2025-02/motor_17.jpg"
                                         alt="LCR Meter"
                                     />
                                     <p>{t("methodIdentifyingPmsm")}</p>
-                                </a>
+                                </Link>
                             </div>
                         </section>
                     </div>
 
                     <div className={styles["sidebar-category"]}>
-                        <a href="/industries-solutions" className={styles["category-title"]}>{t("sidebarTitle")}</a>
-                        <a href="/industries-solutions/mobility" className={styles["category-group"]}>{t("mobility")}</a>
-                        <a href="/industries-solutions/mobility" className={styles["category-group"]}>{t("battery")}</a>
-                        <a href="/industries-solutions/mobility" className={styles["category-group"]}>{t("motor")}</a>
-                        <a href="/industries-solutions/mobility" className={styles["category-group"]}>{t("energy")}</a>
-                        <a href="/industries-solutions/mobility" className={styles["category-group"]}>{t("electronicComponents")}</a>
-                        <a href="/industries-solutions/mobility" className={styles["category-group"]}>{t("infrastructure")}</a>
-                        <a href="/industries-solutions/mobility" className={styles["category-group"]}>{t("testingAnalysis")}</a>
-                        <a href="/industries-solutions/mobility" className={styles["category-group"]}>{t("manufacturingInspection")}</a>
-                        <a href="/industries-solutions/mobility" className={styles["category-group"]}>{t("facilitiesEquipmentMaintenance")}</a>
+                        <Link href={`/${locale}/industries-solutions`} className={styles["category-title"]}>{t("sidebarTitle")}</Link>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["category-group"]}>{t("mobility")}</Link>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["category-group"]}>{t("battery")}</Link>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["category-group"]}>{t("motor")}</Link>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["category-group"]}>{t("energy")}</Link>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["category-group"]}>{t("electronicComponents")}</Link>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["category-group"]}>{t("infrastructure")}</Link>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["category-group"]}>{t("testingAnalysis")}</Link>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["category-group"]}>{t("manufacturingInspection")}</Link>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["category-group"]}>{t("facilitiesEquipmentMaintenance")}</Link>
                     </div>
                 </div>
             </div>

@@ -1,10 +1,12 @@
 'use client';
 
 import styles from "./page.module.scss";
-import { useI18n } from "../../../components/i18n/SimpleI18nProvider";
+import { useTranslations, useLocale } from 'next-intl';
+import Link from 'next/link';
 
-export default async function IndustriesSolutions() {
-    const { t } = useI18n();
+export default function IndustriesSolutions() {
+    const t = useTranslations();
+    const locale = useLocale();
 
     return (
         <div className={styles["industries-solutions-page"]}>
@@ -43,71 +45,71 @@ export default async function IndustriesSolutions() {
                     <h2>Industries</h2>
 
                     <div className={styles["industries-grid"]}>
-                        <a href="/industries-solutions/mobility" className={styles["industry-card"]}>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["industry-card"]}>
                             <img src="https://www.hioki.com/themes/hioki/images/global/industries-solutions/index-img-01.png" alt="Mobility" />
                             <div className={styles["industry-card__title"]}>
                                 Mobility <span>›</span>
                             </div>
-                        </a>
+                        </Link>
 
-                        <a href="/industries-solutions/mobility" className={styles["industry-card"]}>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["industry-card"]}>
                             <img src="https://www.hioki.com/system/files/image/2024-03/img_index_batt.jpg" alt="Battery" />
                             <div className={styles["industry-card__title"]}>
                                 Battery <span>›</span>
                             </div>
-                        </a>
+                        </Link>
 
-                        <a href="/industries-solutions/mobility" className={styles["industry-card"]}>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["industry-card"]}>
                             <img src="https://www.hioki.com/themes/hioki/images/global/industries-solutions/index-img-09.png" alt="Motor" />
                             <div className={styles["industry-card__title"]}>
                                 Motor <span>›</span>
                             </div>
-                        </a>
+                        </Link>
 
-                        <a href="/industries-solutions/mobility" className={styles["industry-card"]}>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["industry-card"]}>
                             <img src="https://www.hioki.com/themes/hioki/images/global/industries-solutions/index-img-03.png" alt="Energy" />
                             <div className={styles["industry-card__title"]}>
                                 Energy <span>›</span>
                             </div>
-                        </a>
+                        </Link>
 
-                        <a href="/industries-solutions/mobility" className={styles["industry-card"]}>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["industry-card"]}>
                             <img src="https://www.hioki.com/themes/hioki/images/global/industries-solutions/index-img-04.png" alt="Electronic" />
                             <div className={styles["industry-card__title"]}>
                                 Electronic <span>›</span>
                             </div>
-                        </a>
+                        </Link>
 
-                        <a href="/industries-solutions/mobility" className={styles["industry-card"]}>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["industry-card"]}>
                             <img src="https://www.hioki.com/themes/hioki/images/global/industries-solutions/index-img-05.png" alt="Infrastructure" />
                             <div className={styles["industry-card__title"]}>
                                 Infrastructure <span>›</span>
                             </div>
-                        </a>
+                        </Link>
                     </div>
 
                     <h2>Solutions</h2>
                     <div className={styles["industries-grid"]}>
-                        <a href="/industries-solutions/mobility" className={styles["industry-card"]}>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["industry-card"]}>
                             <img src="https://www.hioki.com/themes/hioki/images/global/industries-solutions/index-img-06.png" alt="Testing & Analysis" />
                             <div className={styles["industry-card__title"]}>
                                 Testing &amp; Analysis <span>›</span>
                             </div>
-                        </a>
+                        </Link>
 
-                        <a href="/industries-solutions/mobility" className={styles["industry-card"]}>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["industry-card"]}>
                             <img src="https://www.hioki.com/themes/hioki/images/global/industries-solutions/index-img-07.png" alt="Manufacturing" />
                             <div className={styles["industry-card__title"]}>
                                 Manufacturing &amp; Inspection <span>›</span>
                             </div>
-                        </a>
+                        </Link>
 
-                        <a href="/industries-solutions/mobility" className={styles["industry-card"]}>
+                        <Link href={`/${locale}/industries-solutions/mobility`} className={styles["industry-card"]}>
                             <img src="https://www.hioki.com/themes/hioki/images/global/industries-solutions/index-img-08.png" alt="Facilities" />
                             <div className={styles["industry-card__title"]}>
                                 Facilities &amp; Equipment Maintenance <span>›</span>
                             </div>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </section>

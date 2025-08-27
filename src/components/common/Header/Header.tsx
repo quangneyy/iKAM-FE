@@ -3,11 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
-import { useI18n } from "../../i18n/SimpleI18nProvider";
+import { useTranslations, useLocale } from 'next-intl';
 import styles from './Header.module.scss';
 
 export default function Header() {
-  const { t, locale, changeLanguage } = useI18n();
+  const t = useTranslations();
+  const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
 
@@ -16,7 +17,7 @@ export default function Header() {
       <div className={styles.header_main}>
         <div className={styles.header__container}>
           <div className="logo">
-            <Link href="/" className="logo">
+            <Link href={`/${locale}`} className="logo">
               <img
                 src="/assets/img/logo/logo.jpg"
                 alt="Hioki Logo"
@@ -31,10 +32,10 @@ export default function Header() {
               <div className={styles.header_top__container}>
                 <ul className={styles.header_utility}>
                   <li className={styles.my}>
-                    <a href="/global/support/myhioki/login"><span>{t('login')}</span></a>
+                    <Link href={`/${locale}/login`}><span>{t('login')}</span></Link>
                   </li>
                   <li className={styles.contact}>
-                    <a href="/global/support/myhioki/login"><span>{t('contactUs')}</span></a>
+                    <Link href={`/${locale}/contact`}><span>{t('contactUs')}</span></Link>
                   </li>
                 </ul>
               </div>
@@ -42,13 +43,13 @@ export default function Header() {
 
             <nav className={styles.nav}>
               <ul>
-                <li><a href="/products">{t('products')}</a></li>
+                <li><Link href={`/${locale}/products`}>{t('products')}</Link></li>
                 <li>
-                  <a href="/industries-solutions">{t('industriesSolutions')}</a>
+                  <Link href={`/${locale}/industries-solutions`}>{t('industriesSolutions')}</Link>
                 </li>
-                <li><a href="/learning">{t('knowledgeCenter')}</a></li>
-                <li><a href="#">{t('serviceSupport')}</a></li>
-                <li><a href="/about">{t('aboutUs')}</a></li>
+                <li><Link href={`/${locale}/learning`}>{t('knowledgeCenter')}</Link></li>
+                <li><Link href={`/${locale}/service-support`}>{t('serviceSupport')}</Link></li>
+                <li><Link href={`/${locale}/about`}>{t('aboutUs')}</Link></li>
               </ul>
             </nav>
           </div>

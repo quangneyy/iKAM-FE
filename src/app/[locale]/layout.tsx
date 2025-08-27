@@ -1,21 +1,18 @@
-import { SimpleI18nProvider } from "../../components/i18n/SimpleI18nProvider";
-import Header from "../../components/common/Header/Header";
+export function generateStaticParams() {
+  return [{ locale: 'vi' }, { locale: 'en' }];
+}
 
-export default async function LocaleLayout({
+export default function LocaleLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }) {
-  const { locale } = await params;
-
-  const validLocale = locale === 'en' ? 'en' : 'vi';
-
   return (
-    <SimpleI18nProvider locale={validLocale}>
-      <Header />
+    <div>
+      <h2>Locale: {params.locale}</h2>
       {children}
-    </SimpleI18nProvider>
+    </div>
   );
 }
