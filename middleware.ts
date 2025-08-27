@@ -8,5 +8,5 @@ export default createMiddleware({
 });
 
 export const config = {
-    matcher: ['/__disable_mw__']
+    matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
 };
