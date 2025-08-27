@@ -222,7 +222,6 @@ export default function HomePage() {
             </div>
 
             <div className={styles.card}>
-              <h3><i class="icon-download"></i> Downloads</h3>
               <p><strong>Resolve measurement challenges</strong></p>
               <p>
                 Download product brochures and resources like technical

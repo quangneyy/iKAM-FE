@@ -1,0 +1,128 @@
+$primary-color: #333;
+$accent-color: #ff6600;
+$bg-color: white;
+$text-color: #212121;
+
+// body {
+//   font-family: Lato, "Noto Sans JP", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", meiryo, メイリオ, arial, sans-serif;
+//   margin: 0; padding: 0;
+//   color: $text-color;
+//   background: $bg-color;
+// }
+
+.page-learning {
+    width: 100%;
+
+    .knowledge-center {
+        position: relative;
+        width: 100%;
+        // max-width: 1200px;
+        height: 400px;
+        background-image: url('https://www.hioki.com/themes/hioki/common/images/hdg-businesses_learning-01.png');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        &__content {
+            // max-width: 800px;
+            color: #fff;
+
+            h2 {
+                font-size: 42px;
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 16px;
+                line-height: 1.4;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1200px;
+    }
+
+    .product-categories {
+      padding: 2rem 0rem;
+      background: white;
+
+      h2 {
+        font-size: 1.75rem;
+        font-weight: bold;
+        color: #ff6600;
+        margin-bottom: 2rem;
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 1.5rem;
+      }
+
+      .category-item {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #222;
+        padding-right: 118px;
+
+        img {
+          width: 100px;
+          height: auto;
+          margin-right: 1rem;
+        }
+
+        .category-text {
+          flex: 1;
+          font-size: 1rem;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          white-space: nowrap;
+          min-width: 0;
+
+          .arrow {
+            font-size: 1.25rem;
+            color: #ff6600;
+            margin-left: 0.5rem;
+          }
+        }
+
+        &:hover .category-text {
+          color: #ff6600;
+        }
+      }
+    }
+}
+
+@media (max-width: 932px) {
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr) !important;
+        gap: 1rem 0.5rem;
+      }
+
+      .product-categories {
+        margin-left: 60px;
+      }
+}
