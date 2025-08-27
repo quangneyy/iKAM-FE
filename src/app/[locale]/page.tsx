@@ -232,7 +232,6 @@ export default function HomePage() {
             </div>
 
             <div className={styles.card}>
-              <h3><i class="icon-user"></i> my HIOKI</h3>
               <ul>
                 <li>
                   <strong>Product registration</strong> — Receive notifications

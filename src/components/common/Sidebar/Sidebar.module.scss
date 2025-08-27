@@ -1,0 +1,48 @@
+@import "@/styles/variables";
+@import "@/styles/mixins";
+
+.sidebar {
+  padding: 0 1rem;
+  margin: 0 2rem;
+
+  ul {
+    padding-left: 1rem;
+    margin: 0;
+  }
+
+  li {
+    margin: 0.5rem 0;
+
+    a {
+      text-decoration: none;
+
+      &:hover {
+        color: $color-blue
+      }
+    }
+  }
+}
+
+.container {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-width: 0 0 0.1px 0;
+  border-style: solid;
+  border-color: $color-text-light;
+
+  a {
+    font-weight: normal;
+    font-size: $text-base;
+  }
+
+  > a {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+
+    &:hover {
+      color: $color-blue
+    }
+  }
+
+}

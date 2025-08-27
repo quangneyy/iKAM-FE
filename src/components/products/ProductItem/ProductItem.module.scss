@@ -1,0 +1,38 @@
+
+.product {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 8px;
+  padding: 0.5rem;
+
+  &__image {
+    width: 100%;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__title {
+    text-align: center;
+
+  }
+}
+
+.product-desc {
+  margin: 0;
+  list-style-position: outside;
+  padding-left: 1rem;
+
+
+  &__text {
+    margin: 0.5rem 0;
+    font-size: 0.875rem;;
+    font-weight: 500;
+
+    &::marker {
+      color: #ff6600;
+      font-size: 1rem;
+    }
+  }
+}

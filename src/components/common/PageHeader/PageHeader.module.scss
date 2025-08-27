@@ -1,0 +1,43 @@
+@import "@/styles/variables";
+@import "@/styles/mixins";
+
+.pageHeader {
+
+  .background {
+    background-color: $color-primary;
+    justify-items: center;
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: $text-3xl;
+    font-weight: bold;
+    color: white
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    font-size: $text-xs;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 1rem clamp(1rem, 1vw, 10rem) 2rem;
+
+    .breadcrumbItem {
+      display: flex;
+      align-items: center;
+
+      a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .breadcrumbSeparator {
+      margin: 0 8px;
+    }
+  }
+}

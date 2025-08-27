@@ -1,0 +1,33 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.main {
+  max-width: 1250px;
+  margin: 0 auto;
+
+  padding-left: clamp(1rem, 1vw, 10rem);
+  padding-right: clamp(1rem, 1vw, 10rem);
+
+ @include xl(){
+   max-width: 100%;
+ }
+
+  &--with-sidebar {
+    display: grid;
+    grid-template-columns: 8.2fr 1.8fr;
+
+    @include lg() {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @include xl() {
+    padding: 0 1rem
+  }
+
+}

@@ -1,0 +1,50 @@
+/* Switch.module.scss */
+
+.switch {
+  // để toàn bộ children đều dùng border-box
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  &__input {
+    display: none; // ẩn checkbox thật
+
+    // khi input được checked → label thay đổi style
+    &:checked + .switch__label::after {
+      left: 50%; // dịch "nút tròn" sang phải
+    }
+
+    &:checked + .switch__label {
+      background: #256176; // màu nền khi ON
+    }
+  }
+
+  &__label {
+    outline: 0;
+    display: block;
+    width: 64px;
+    height: 32px;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    background: #f0f0f0; // màu nền mặc định
+    border-radius: 32px;
+    padding: 2px;
+    transition: all 0.4s ease;
+
+    // "nút tròn"
+    &::after {
+      content: "";
+      position: relative;
+      display: block;
+      width: 50%;
+      height: 100%;
+      left: 0; // mặc định nằm bên trái
+      border-radius: 50%;
+      background: #fff;
+      transition: all 0.2s ease;
+    }
+  }
+}

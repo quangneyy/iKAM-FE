@@ -1,0 +1,74 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+
+.checkboxWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+
+    & + label {
+      position: relative;
+      padding-left: $checkbox-width + 6px;
+      cursor: pointer;
+      // ô vuông
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: $checkbox-width;
+        height: $checkbox-width;
+        border: 2px solid #888;
+        border-radius: 4px;
+        background: white;
+        transition: all 0.2s ease;
+      }
+
+      // dấu tick
+      &::after {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 40%;
+        transform: translateY(-45%) rotate(45deg);
+        width: 6px;
+        height: 10px;
+        border-right: 2px solid white;
+        border-bottom: 2px solid white;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+      }
+    }
+
+    // khi checked
+    &:checked + label {
+      &::before {
+        background: $color-blue;
+        border-color: $color-blue;
+      }
+
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    // khi disabled
+    &:disabled + label {
+      cursor: not-allowed;
+      color: #aaa;
+
+      &::before {
+        background: #eee;
+        border-color: #ccc;
+      }
+    }
+  }
+}
